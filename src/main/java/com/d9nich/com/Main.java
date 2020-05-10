@@ -1,5 +1,6 @@
 package com.d9nich.com;
 
+import com.d9nich.com.searchingAlgorithms.AStar;
 import com.d9nich.com.searchingAlgorithms.HungrySearch;
 
 import java.io.File;
@@ -25,6 +26,13 @@ public class Main {
             for (int j = i + 1; j < cities.length; j++) {
                 assert roadMatrix != null;
                 System.out.println(HungrySearch.search(matrix, roadMatrix, i, j, cities));
+            }
+        }
+        for (int i = 0; i < cities.length; i++) {
+            for (int j = 0; j < cities.length; j++) {
+                assert matrix != null;
+                System.out.println("Шлях від: " + cities[i] + "->" + cities[j]);
+                System.out.println(AStar.search(matrix, roadMatrix, j, i, cities));
             }
         }
 
