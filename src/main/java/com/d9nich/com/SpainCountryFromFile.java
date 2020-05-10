@@ -34,7 +34,7 @@ public class SpainCountryFromFile {
     private static String[] citiesName(Country[] countries, int numberOfFirst) {
         String[] citiesName = new String[numberOfFirst];
         for (int i = 0; i < numberOfFirst; i++)
-            citiesName[i] = countries[i].getCity();
+            citiesName[i] = countries[i].getCity() + ", Spain";
         return citiesName;
     }
 
@@ -52,6 +52,26 @@ public class SpainCountryFromFile {
                 j++;
             }
             return matrixOfRoad;
+        } catch (FileNotFoundException ex) {
+            System.out.println("File not found");
+        }
+        return null;
+    }
+
+    public static long[][] getDistanceMatrix(File file) {
+        try (Scanner input = new Scanner(new BufferedInputStream(new FileInputStream(file)))) {
+            String[] lines = input.nextLine().split("\\s");
+            long[][] distanceMatrix = new long[lines.length][lines.length];
+            for (int i = 0; i < lines.length; i++)
+                distanceMatrix[0][i] = Integer.parseInt(lines[i]);
+            int j = 1;
+            while (input.hasNext()) {
+                lines = input.nextLine().split("\\s");
+                for (int i = 0; i < lines.length; i++)
+                    distanceMatrix[j][i] = Long.parseLong(lines[i]);
+                j++;
+            }
+            return distanceMatrix;
         } catch (FileNotFoundException ex) {
             System.out.println("File not found");
         }
