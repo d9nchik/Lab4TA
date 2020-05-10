@@ -34,7 +34,7 @@ public class SpainCountryFromFile {
     private static String[] citiesName(Country[] countries, int numberOfFirst) {
         String[] citiesName = new String[numberOfFirst];
         for (int i = 0; i < numberOfFirst; i++)
-            citiesName[i] = countries[i].getCity() + ", Spain";
+            citiesName[i] = countries[i].getCity();
         return citiesName;
     }
 

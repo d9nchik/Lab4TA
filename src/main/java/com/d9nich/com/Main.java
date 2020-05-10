@@ -1,5 +1,7 @@
 package com.d9nich.com;
 
+import com.d9nich.com.searchingAlgorithms.HungrySearch;
+
 import java.io.File;
 
 
@@ -19,5 +21,12 @@ public class Main {
         else
             matrix = SpainCountryFromFile.getDistanceMatrix(new File(
                     "src/main/java/com/d9nich/com/distance.txt"));
+        for (int i = 0; i < cities.length; i++) {
+            for (int j = i + 1; j < cities.length; j++) {
+                assert roadMatrix != null;
+                System.out.println(HungrySearch.search(matrix, roadMatrix, i, j, cities));
+            }
+        }
+
     }
 }

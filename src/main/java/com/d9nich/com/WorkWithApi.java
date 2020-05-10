@@ -32,9 +32,14 @@ public class WorkWithApi {
     }
 
     public static long[][] getDistanceMatrix(String[] countries) {
-        long[][] matrix = new long[countries.length][countries.length];
+        String[] countriesWithSpain = countries.clone();
+        for (int i = 0; i < countriesWithSpain.length; i++) {
+            countriesWithSpain[i] += ", Spain";
+        }
+        long[][] matrix = new long[countriesWithSpain.length][countriesWithSpain.length];
         for (int i = 0; i < matrix.length - 1; i++) {
-            long[] array = getDistanceLine(countries[i], Arrays.copyOfRange(countries, i + 1, countries.length));
+            long[] array = getDistanceLine(countriesWithSpain[i],
+                    Arrays.copyOfRange(countriesWithSpain, i + 1, countriesWithSpain.length));
             for (int j = i + 1; j < matrix.length; j++) {
                 assert array != null;
                 matrix[i][j] = matrix[j][i] = array[j - i - 1];
