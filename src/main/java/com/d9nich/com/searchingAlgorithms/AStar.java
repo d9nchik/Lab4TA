@@ -61,8 +61,8 @@ public class AStar {
 class Node implements Comparable<Node> {
     private final long heuristic;
     private final int position;
-    private long pathFromStart;
-    private int father;
+    private final long pathFromStart;
+    private final int father;
 
     public Node(long heuristic, long pathFromStart, int position, int father) {
         this.heuristic = heuristic;
@@ -75,20 +75,8 @@ class Node implements Comparable<Node> {
         return father;
     }
 
-    public void setFather(int father) {
-        this.father = father;
-    }
-
-    public long getHeuristic() {
-        return heuristic;
-    }
-
     public long getPathFromStart() {
         return pathFromStart;
-    }
-
-    public void setPathFromStart(long pathFromStart) {
-        this.pathFromStart = pathFromStart;
     }
 
     public long getFullPath() {
